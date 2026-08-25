@@ -14,5 +14,9 @@ __pycache__/
 image.ipynb
 .ipynb_checkpoints/
 
+# Personal recognition data (biometric) - keep local only
+known_faces.json
+lockers/
+
 # OS junk
 .DS_Store
