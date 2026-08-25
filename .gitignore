@@ -1,0 +1,18 @@
+# Virtual environment (2.4 GB, not needed in repo)
+venv/
+
+# Captured face images (biometric / personal data) and trained artifacts
+faces/
+trained_model.yml
+metadata.json
+
+# Python caches
+__pycache__/
+*.pyc
+
+# Jupyter notebook (redundant now that we have the GUI)
+image.ipynb
+.ipynb_checkpoints/
+
+# OS junk
+.DS_Store
