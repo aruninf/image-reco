@@ -136,28 +136,8 @@ def test_frame_encoding_no_face():
     assert FaceSystem.frame_encoding(black) is None
 
 if __name__ == "__main__":
+    import tempfile, pathlib
     test_ear_open_gt_closed(); test_ear_thresholds(); test_blink_detector()
-    import tempfile
-    with tempfile.TemporaryDirectory() as d:
-        test_match_known_and_unknown(tmp_path=type("T",(),{"__init__":lambda s:None})())
-    # simpler: run match test with real tmp
-    import tempfile as _t
-    with _t.TemporaryDirectory() as d:
-        test_match_known_and_unknown(tmp_path=type("P",(),{"__init__":lambda self:setattr(self,"__dict__",{})})())
-    print("ALL TESTS PASSED")
-```
-
-> Note: the `__main__` block above is just a convenience runner; run the real test via Step 2 using a temp dir. Replace the awkward runner with a direct call:
-
-```python
-if __name__ == "__main__":
-    import tempfile, types
-    test_ear_open_gt_closed(); test_ear_thresholds(); test_blink_detector()
-    with tempfile.TemporaryDirectory() as d:
-        P = types.SimpleNamespace()
-        P / 0  # placeholder
-    # use pathlib instead:
-    import pathlib
     with tempfile.TemporaryDirectory() as d:
         test_match_known_and_unknown(tmp_path=pathlib.Path(d))
     test_frame_encoding_no_face()
